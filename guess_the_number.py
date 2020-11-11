@@ -11,7 +11,31 @@ from random import randint
 # Generate the random number
 random_number = randint(1, 20)
 
-#begin the guessing counter at 0
+########################################################################################################################
+########################################################################################################################
+## Error checking functions
+########################################################################################################################
+########################################################################################################################
+def try_again_asshole():
+    try_again = print("Sorry, you're not using this program correctly. Try again, asshole...")
+
+
+
+# def is_it_a_number(guess):
+#     if guess.isdigit() == True:
+#         guess = int(input())
+#         return guess
+#     elif guess.isalpha():
+#         try_again_asshole()
+#         guess = input()
+
+########################################################################################################################
+########################################################################################################################
+## Main program thingies
+########################################################################################################################
+########################################################################################################################
+
+# Begin the guessing counter at 0
 guesses_taken = 0
 
 print("Yo, playa! What\'s your name, you saucy upstart?")
@@ -23,16 +47,19 @@ print("You have 6 chances to guess the correct number, or every single kitten on
 for guesses_taken in range (6):
     print("Take a guess, kiddo! No pressure.")
     guess = input()
-    guess = int(guess)
+    if guess.isdigit() == True:
+        guess = int(guess)
 
-    if guess < random_number:
-        print("Your guess is too low, " + player_name + " try again.")
+        if guess < random_number:
+            print("Your guess is too low, " + player_name + " try again.")
 
-    if guess > random_number:
-        print("Whoa hey now!" + " Slow down, cowboy. Your guess is too high, try again.")
+        if guess > random_number:
+            print("Whoa hey now!" + " Slow down, cowboy. Your guess is too high, try again.")
 
-    if guess == random_number:
-        break
+        if guess == random_number:
+            break
+    else:
+        try_again_asshole()
 if guess == random_number:        
     guesses_taken = str(guesses_taken + 1)    
     print("Well shucks, player! You done guessed the right number in " + guesses_taken + "! \n Great job, the kitties are a-okay")
